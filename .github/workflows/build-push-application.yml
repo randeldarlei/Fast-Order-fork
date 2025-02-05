@@ -33,7 +33,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/fastorder:latest -t ${{ secrets.DOCKER_USERNAME }}/fastorder:${{ github.sha }} .
+          docker build -f src/Postech8SOAT.FastOrder.WebAPI/Dockerfile \
+            -t ${{ secrets.DOCKER_USERNAME }}/fastorder:latest \
+            -t ${{ secrets.DOCKER_USERNAME }}/fastorder:${{ github.sha }} \
+            src/Postech8SOAT.FastOrder.WebAPI
 
       - name: Push Docker images to Docker Hub
         run: |
